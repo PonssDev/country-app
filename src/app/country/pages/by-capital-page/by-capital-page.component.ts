@@ -15,9 +15,9 @@ import { Country } from '../../interfaces/country.interface';
 export class ByCapitalPageComponent {
   public readonly countries = signal<Country[]>([])
 
-  private readonly isLoading = signal(false)
+  public readonly isError = signal<string | null>(null)
 
-  private readonly isError = signal<string | null>(null)
+  private readonly isLoading = signal(false)
 
   private readonly countryService = inject(CountryService)
 
@@ -29,10 +29,16 @@ export class ByCapitalPageComponent {
     this.isError.set(null)
 
     this.countryService.searchByCapital(query)
-      .subscribe((countries) => {
-        this.isLoading.set(false)
-        this.countries.set(countries)
-        console.log(countries)
+      .subscribe({
+        next: (countries) => {
+          this.isLoading.set(false)
+          this.countries.set(countries)
+        },
+        error: (err) => {
+          this.isLoading.set(false)
+          this.countries.set([])
+          this.isError.set(err)
+        },
       })
   }
 }
