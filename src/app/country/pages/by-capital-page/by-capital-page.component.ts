@@ -3,6 +3,8 @@ import { SearchInputComponent } from "../../components/search-input/search-input
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { CountryService } from '../../services/country.service';
 import { RESTCountry } from '../../interfaces/rest-countries.interface';
+import { CountryMapper } from '../../mappers/country.mapper';
+import { Country } from '../../interfaces/country.interface';
 
 @Component({
   selector: 'app-by-capital-page',
@@ -11,7 +13,7 @@ import { RESTCountry } from '../../interfaces/rest-countries.interface';
   templateUrl: './by-capital-page.component.html',
 })
 export class ByCapitalPageComponent {
-  public readonly countries = signal<RESTCountry[]>([])
+  public readonly countries = signal<Country[]>([])
 
   private readonly isLoading = signal(false)
 
@@ -27,10 +29,9 @@ export class ByCapitalPageComponent {
     this.isError.set(null)
 
     this.countryService.searchByCapital(query)
-      .subscribe((countries: RESTCountry[]) => {
+      .subscribe((countries) => {
         this.isLoading.set(false)
         this.countries.set(countries)
-
         console.log(countries)
       })
   }
