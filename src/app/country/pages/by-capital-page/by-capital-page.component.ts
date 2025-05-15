@@ -2,8 +2,6 @@ import { Component, inject, signal } from '@angular/core';
 import { SearchInputComponent } from "../../components/search-input/search-input.component";
 import { CountryListComponent } from "../../components/country-list/country-list.component";
 import { CountryService } from '../../services/country.service';
-import { RESTCountry } from '../../interfaces/rest-countries.interface';
-import { CountryMapper } from '../../mappers/country.mapper';
 import { Country } from '../../interfaces/country.interface';
 
 @Component({
@@ -17,7 +15,7 @@ export class ByCapitalPageComponent {
 
   public readonly isError = signal<string | null>(null)
 
-  private readonly isLoading = signal(false)
+  public readonly isLoading = signal(false)
 
   private readonly countryService = inject(CountryService)
 

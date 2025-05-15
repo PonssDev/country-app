@@ -1,2 +1,11 @@
-<country-search-input></country-search-input>
-<!-- <country-list></country-list> -->
+<country-search-input (value)="onSearch($event)"></country-search-input>
+@if (isError()) {
+<h3>{{isError()}}</h3>
+}@else{
+<country-list
+[countries]="countries()"
+[errorMessage]="isError()"
+[isEmpty]="!countries()"
+[isLoading]="isLoading()"
+></country-list>
+}
