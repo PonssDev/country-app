@@ -1,3 +1,45 @@
-<p>country-page works!</p>,
+<div *ngIf="isLoading()">
+  <h2>Cargando...</h2>
+</div>
 
-<h1>{{countryCode}}</h1>
+<div *ngIf="hasError()">
+  <h2>Error al cargar el país</h2>
+  <p>No se pudo encontrar el país con código: {{countryCode}}</p>
+  <a routerLink="/">Volver</a>
+</div>
+
+<div *ngIf="country() && !isLoading() && !hasError()">
+  <div class="row">
+    <div class="col-12">
+      <h2>País: {{ country()?.name }}</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>Bandera</h3>
+      <img [src]="country()?.flagSvg" [alt]="country()?.name" class="img-thumbnail">
+    </div>
+    
+    <div class="col-8">
+      <h3>Información</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Código:</strong> {{ country()?.cca2 }}
+        </li>
+        <li class="list-group-item">
+          <strong>Capital:</strong> {{ country()?.capital }}
+        </li>
+        <li class="list-group-item">
+          <strong>Población:</strong> {{ country()?.population | number }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col">
+      <a routerLink="/" class="btn btn-primary">Volver</a>
+    </div>
+  </div>
+</div>
