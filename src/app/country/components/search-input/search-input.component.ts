@@ -4,7 +4,7 @@ import { Component, output, } from '@angular/core';
   selector: 'country-search-input',
   standalone: true,
   imports: [],
-  templateUrl: './search-input.component.html',
+  templateUrl: './search-input.component.html'
 })
 export class SearchInputComponent {
   value = output<string>()

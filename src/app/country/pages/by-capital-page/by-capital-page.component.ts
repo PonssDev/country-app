@@ -8,7 +8,7 @@ import { Country } from '../../interfaces/country.interface';
   selector: 'app-by-capital-page',
   standalone: true,
   imports: [SearchInputComponent, CountryListComponent],
-  templateUrl: './by-capital-page.component.html',
+  templateUrl: './by-capital-page.component.html'
 })
 export class ByCapitalPageComponent {
   public readonly countries = signal<Country[]>([])

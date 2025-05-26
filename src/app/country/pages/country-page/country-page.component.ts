@@ -6,7 +6,7 @@ import { CountryService } from '../../services/country.service';
   selector: 'app-country-page',
   standalone: true,
   imports: [],
-  templateUrl: './country-page.component.html',
+  templateUrl: './country-page.component.html'
 })
 export class CountryPageComponent {
   public countryCode = inject(ActivatedRoute).snapshot.params['code']

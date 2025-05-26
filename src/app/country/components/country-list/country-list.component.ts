@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
     DecimalPipe,
     RouterLink
   ],
-  templateUrl: './country-list.component.html',
+  templateUrl: './country-list.component.html'
 })
 export class CountryListComponent {
   countries = input.required<Country[]>()

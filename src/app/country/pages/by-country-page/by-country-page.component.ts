@@ -8,7 +8,7 @@ import { CountryService } from '../../services/country.service';
   selector: 'app-by-country-page',
   standalone: true,
   imports: [SearchInputComponent, CountryListComponent],
-  templateUrl: './by-country-page.component.html',
+  templateUrl: './by-country-page.component.html'
 })
 export class ByCountryPageComponent {
   public readonly countries = signal<Country[]>([])
